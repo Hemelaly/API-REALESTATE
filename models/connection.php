@@ -2,11 +2,13 @@
 
 class Connection{
 
+class Connection{
+
 	static public function connect(){
 
 		try{
 
-			$link = new PDO("mysql:host=sql213.infinityfree.com;dbname=if0_39110490_bluehouse","if0_39110490", "Umdois3quatro");
+			$link = new PDO("mysql:host=yamanote.proxy.rlwy.net;dbname=railway","root", "dkwmLeVkChfxLmfIYOzgcuEItsjRogdN");
 
 			$link->exec("set names utf8");
 
@@ -21,4 +23,3 @@ class Connection{
 	}
 
 }
-
