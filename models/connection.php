@@ -2,8 +2,6 @@
 
 class Connection{
 
-class Connection{
-
 	static public function connect(){
 
 		try{
