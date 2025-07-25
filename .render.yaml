@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: api-realestate
+    env: static
+    staticPublishPath: public
+    buildCommand: ""
+    startCommand: ""
