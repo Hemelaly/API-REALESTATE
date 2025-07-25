@@ -1,37 +1,15 @@
-Options All -Indexes
+# Impede listagem de diretórios
+Options -Indexes
+
+# Desativa MultiViews (melhora o comportamento com URLs amigáveis)
 Options -MultiViews
 
+# Ativa o módulo de reescrita
 RewriteEngine On
 
+# Reescreve todas as requisições que não são arquivos reais
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redireciona tudo para index.php
 RewriteRule ^ index.php [QSA,L]
-
-RewriteCond %{HTTP_HOST} !^$
-RewriteCond %{HTTP_HOST} !^www\. [NC]
-RewriteCond %{HTTPS} !on
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
-
-RewriteCond %{HTTP_HOST} ^www\.api-realestate-glzi.onrender\.com [NC] 
-RewriteRule ^(.*)$ https://api-realestate-glzi.onrender.com/ [L,R=301]
-
-# asegurando el archivo htaccess
-<Files .htaccess>
-order allow,deny
-deny from all
-</Files>
-
-<FilesMatch "\.(js|css)$">
-    Header set Cache-Control "max-age=5"
-</FilesMatch>
-
-# denegar acceso a robots maliciosos, extractores de webs y navegadores offline
-RewriteBase /
-RewriteCond %{HTTP_USER_AGENT} ^Anarchie [OR]
-RewriteCond %{HTTP_USER_AGENT} ^ASPSeek [OR]
-RewriteCond %{HTTP_USER_AGENT} ^attach [OR]
-RewriteCond %{HTTP_USER_AGENT} ^autoemailspider [OR]
-RewriteCond %{HTTP_USER_AGENT} ^Xaldon\ WebSpider [OR]
-RewriteCond %{HTTP_USER_AGENT} ^Xenu [OR]
-RewriteCond %{HTTP_USER_AGENT} ^Zeus.*Webster [OR]
-RewriteCond %{HTTP_USER_AGENT} ^Zeus
-RewriteRule ^.* - [F,L]
