@@ -1,7 +1,15 @@
-Options All -Indexes
+# Impede listagem de diretórios
+Options -Indexes
+
+# Desativa MultiViews (melhora o comportamento com URLs amigáveis)
 Options -MultiViews
 
+# Ativa o módulo de reescrita
 RewriteEngine On
 
+# Reescreve todas as requisições que não são arquivos reais
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redireciona tudo para index.php
 RewriteRule ^ index.php [QSA,L]
